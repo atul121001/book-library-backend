@@ -46,8 +46,8 @@ router.patch('/book/:bookID', async(req, res)=>{
             { new: true, runValidators: true }
         );
 
-        const result = await run();
-        console.log(result);
+        // const result = await run();
+        // console.log(result);
         
         res.status(200).json(updatedBook);
     } catch(error) {
