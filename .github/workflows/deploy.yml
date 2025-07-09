@@ -27,7 +27,8 @@ jobs:
           git pull && 
           npm i && 
           
-          # Create .env file from GitHub secrets
+          # Always create/update .env file with latest values from GitHub secrets
+          echo "Updating .env file with latest environment variables..."
           cat > .env << EOL
           MONGODB_URI=${{ secrets.MONGODB_URI }}
           PORT=${{ secrets.PORT || 3001 }}
