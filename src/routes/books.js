@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {Book} = require('../model/Book')
+const {run} = require('../utils/sendEmail');
 
 router.post('/book/create', async(req, res)=>{
     const {title, author, status, description} = req?.body;
@@ -44,6 +45,9 @@ router.patch('/book/:bookID', async(req, res)=>{
             updates, 
             { new: true, runValidators: true }
         );
+
+        const result = await run();
+        console.log(result);
         
         res.status(200).json(updatedBook);
     } catch(error) {
